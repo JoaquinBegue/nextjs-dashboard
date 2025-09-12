@@ -1,0 +1,22 @@
+services:
+  nextjs-app:
+    build:
+      context: . # Build from the current directory where the Dockerfile is located
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" # Map host port 3000 to container port 3000
+    #volumes:
+    #  - .:/app # Mount the current directory into the container's /app directory for live reloading
+    #  - /app/node_modules # Create a named volume for node_modules to avoid host dependencies
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+    #environment:
+    # Define environment variables for your Next.js app (e.g., API keys)
+    # - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    env_file:
+      - .env
