@@ -16,6 +16,7 @@ export default async function LatestInvoices() {
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
           {latestInvoices.map((invoice, i) => {
+            console.log(invoice.image_url);
             return (
               <div
                 key={invoice.id}
@@ -33,6 +34,10 @@ export default async function LatestInvoices() {
                     className="mr-4 rounded-full"
                     width={32}
                     height={32}
+                    unoptimized={
+                      true /*image optimization process breaks the
+                      dev server in satellite notebook due to weak processor)*/
+                    }
                   />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
