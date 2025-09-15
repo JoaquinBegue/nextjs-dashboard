@@ -34,10 +34,7 @@ export default async function LatestInvoices() {
                     className="mr-4 rounded-full"
                     width={32}
                     height={32}
-                    unoptimized={
-                      true /*image optimization process breaks the
-                      dev server in satellite notebook due to weak processor)*/
-                    }
+                    unoptimized={process.env.IMAGE_OPTIMIZATION == "false"}
                   />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">

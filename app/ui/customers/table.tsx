@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import Search from '@/app/ui/search';
+import Image from "next/image";
+import { lusitana } from "@/app/ui/fonts";
+import Search from "@/app/ui/search";
 import {
   CustomersTableType,
   FormattedCustomersTable,
-} from '@/app/lib/definitions';
+} from "@/app/lib/definitions";
 
 export default async function CustomersTable({
   customers,
@@ -37,6 +37,9 @@ export default async function CustomersTable({
                               alt={`${customer.name}'s profile picture`}
                               width={28}
                               height={28}
+                              unoptimized={
+                                process.env.IMAGE_OPTIMIZATION == "false"
+                              }
                             />
                             <p>{customer.name}</p>
                           </div>
@@ -94,6 +97,9 @@ export default async function CustomersTable({
                             alt={`${customer.name}'s profile picture`}
                             width={28}
                             height={28}
+                            unoptimized={
+                              process.env.IMAGE_OPTIMIZATION == "false"
+                            }
                           />
                           <p>{customer.name}</p>
                         </div>
